@@ -17,12 +17,11 @@ const app = express();
 const port = process.env.PORT || 3001;
 app.use(express.json());
 app.use(cors({
-    origin: [
-        'http://localhost:4200',
-        'https://frontendvercel-ysdv.vercel.app'
-    ],
-    credentials: true
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+app.options('*', cors());
 
 // =========================
 // ENDPOINTS PARA DASHBOARD
